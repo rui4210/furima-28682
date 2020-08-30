@@ -12,7 +12,7 @@ Things you may want to cover:
 * Configuration
 
 * Database creation
-
+https://i.gyazo.com/ae5ec23aa77121eee82a578be88d7556.png
 * Database initialization
 
 * How to run the test suite

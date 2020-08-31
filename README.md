@@ -1,24 +1,56 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##　users テーブル
 
-Things you may want to cover:
+| Column           | Type   | Options     |
+| -----------------| ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| family_name      | string | null: false |
+| first_name       | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
+| birth_day        | date   | null: false |
 
-* Ruby version
+### Association
+- has_many :items
+- has_many :buys
 
-* System dependencies
+##　items テーブル
 
-* Configuration
+| Column           | Type      | Options     |
+| ---------------- | -------   | ----------- |
+| name  　　　      | string    | null: false |
+| category         | string    | null: false |
+| price            | integer   | null: false |
+| product_status   | integer   | null: false |
+| shipping_charges | integer   | null: false |
+| shipping_region  | integer   | null: false |
+| shipping_day     | integer   | null: false |
+| image            | text      | null: false |
+| desecription     | text      | null: false |
+| user             | reference | foreign_key: true |
 
-* Database creation
+### Association
+- belings_to :user
+- belongs_to :buy
 
-* Database initialization
+##　buys テーブル
 
-* How to run the test suite
+| Column              | Type    | Options     |
+| ------------------- | ------- | ----------- |
+| credit_card         | integer | null: false |
+| card_validity_year  | integer | null: false |
+| card_validity_month | integer | null: false |
+| cvc                 | integer | null: false |
+| post_number         | string  | null: false |
+| prefecture          | integer | null: false |
+| city                | string  | null: false |
+| adress              | text    | null: false |
+| buolding_name       | text    | null: false |
+| phone_number        | string  | null: false |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belings_to :user
+- belongs_to :item

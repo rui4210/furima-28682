@@ -30,12 +30,12 @@
 | shipping_region  | integer   | null: false |
 | shipping_day     | integer   | null: false |
 | image            | text      | null: false |
-| desecription     | text      | null: false |
+| description      | text      | null: false |
 | user             | reference | foreign_key: true |
 
 ### Association
 - belongs_to :user
-- belongs_to :buy
+- has_one :buy
 
 ##　buys テーブル
 
@@ -44,9 +44,19 @@
 | post_number         | string  | null: false |
 | prefecture          | integer | null: false |
 | city                | string  | null: false |
-| adress              | text    | null: false |
-| buolding_name       | text    | null: false |
+| address             | text    | null: false |
+| building_name       | text    | null: false |
 | phone_number        | string  | null: false |
+
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## transaction　テーブル
+| Column              | Type      | Options     |
+| ------------------- | --------- | ----------- |
+| user_id             | reference | null: false, foreign_key: true |
+| item_id             | reference | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user

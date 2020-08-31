@@ -11,9 +11,7 @@
 | first_name       | string | null: false |
 | family_name_kana | string | null: false |
 | first_name_kana  | string | null: false |
-| birth_yaer       | string | null: false |
-| birth_month      | string | null: false |
-| birth_day        | string | null: false |
+| birth_day        | date   | null: false |
 
 ### Association
 - has_many :items
@@ -23,19 +21,20 @@
 
 | Column           | Type      | Options     |
 | ---------------- | -------   | ----------- |
-| item_name        | string    | null: false |
+| name  　　　      | string    | null: false |
 | category         | string    | null: false |
 | price            | integer   | null: false |
-| product_status   | string    | null: false |
-| shipping_charges | string    | null: false |
-| shipping_region  | string    | null: false |
+| product_status   | integer   | null: false |
+| shipping_charges | integer   | null: false |
+| shipping_region  | integer   | null: false |
+| shipping_day     | integer   | null: false |
 | image            | text      | null: false |
 | desecription     | text      | null: false |
-| nickname         | reference | foreign_key: true |
+| user             | reference | foreign_key: true |
 
 ### Association
-- belings_to :users
-- belongs_to :buys
+- belings_to :user
+- belongs_to :buy
 
 ##　buys テーブル
 
@@ -45,13 +44,13 @@
 | card_validity_year  | integer | null: false |
 | card_validity_month | integer | null: false |
 | cvc                 | integer | null: false |
-| post_number         | integer | null: false |
-| prefecture          | string  | null: false |
+| post_number         | string  | null: false |
+| prefecture          | integer | null: false |
 | city                | string  | null: false |
 | adress              | text    | null: false |
 | buolding_name       | text    | null: false |
-| phone_number        | integer | null: false |
+| phone_number        | string  | null: false |
 
 ### Association
-- belings_to :users
-- belongs_to :items
+- belings_to :user
+- belongs_to :item

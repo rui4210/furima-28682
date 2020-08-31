@@ -1,6 +1,6 @@
 # README
 
-=======
+
 ##　users テーブル
 
 | Column           | Type   | Options     |
@@ -16,7 +16,7 @@
 
 ### Association
 - has_many :items
-- has_many :buys
+- has_many :item_purchases
 
 ##　items テーブル
 
@@ -35,24 +35,24 @@
 
 ### Association
 - belongs_to :user
-- has_one :buy
+- has_one :item_purchases
 
 ##　buys テーブル
 
-| Column              | Type    | Options     |
-| ------------------- | ------- | ----------- |
-| post_number         | string  | null: false |
-| prefecture          | integer | null: false |
-| city                | string  | null: false |
-| address             | text    | null: false |
-| building_name       | text    | null: false |
-| phone_number        | string  | null: false |
+| Column              | Type      | Options     |
+| ------------------- | --------- | ----------- |
+| post_number         | string    | null: false,foreign_key:true |
+| prefecture          | integer   | null: false,foreign_key:true |
+| city                | string    | null: false,foreign_key:true |
+| address             | text      | null: false,foreign_key:true |
+| building_name       | text      | foreign_key:true             |
+| phone_number        | string    | null: false,foreign_key:true |
+| item_purchases_id   | reference | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
-- belongs_to :item
+- belongs_to :item_purchases
 
-## transaction　テーブル
+## item_purchases　テーブル
 | Column              | Type      | Options     |
 | ------------------- | --------- | ----------- |
 | user_id             | reference | null: false, foreign_key: true |
@@ -61,3 +61,4 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+- has_one :buy

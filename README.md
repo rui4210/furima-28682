@@ -44,8 +44,8 @@
 | post_number         | string    | null: false |
 | prefecture          | integer   | null: false |
 | city                | string    | null: false |
-| address             | text      | null: false |
-| building_name       | text      |             |
+| address             | string    | null: false |
+| building_name       | string    |             |
 | phone_number        | string    | null: false |
 | item_purchases      | reference | null: false, foreign_key: true |
 

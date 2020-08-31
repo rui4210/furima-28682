@@ -22,8 +22,8 @@
 
 | Column           | Type      | Options     |
 | ---------------- | -------   | ----------- |
-| name  　　　      | string    | null: false |
-| category         | string    | null: false |
+| name             | string    | null: false |
+| category         | integer   | null: false |
 | price            | integer   | null: false |
 | product_status   | integer   | null: false |
 | shipping_charges | integer   | null: false |

@@ -35,28 +35,28 @@
 
 ### Association
 - belongs_to :user
-- has_one :item_purchases
+- has_one :item_purchase
 
 ##　buys テーブル
 
 | Column              | Type      | Options     |
 | ------------------- | --------- | ----------- |
-| post_number         | string    | null: false,foreign_key:true |
-| prefecture          | integer   | null: false,foreign_key:true |
-| city                | string    | null: false,foreign_key:true |
-| address             | text      | null: false,foreign_key:true |
-| building_name       | text      | foreign_key:true             |
-| phone_number        | string    | null: false,foreign_key:true |
-| item_purchases_id   | reference | null: false, foreign_key: true |
+| post_number         | string    | null: false |
+| prefecture          | integer   | null: false |
+| city                | string    | null: false |
+| address             | text      | null: false |
+| building_name       | text      |             |
+| phone_number        | string    | null: false |
+| item_purchases      | reference | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :item_purchases
+- belongs_to :item_purchase
 
 ## item_purchases　テーブル
 | Column              | Type      | Options     |
 | ------------------- | --------- | ----------- |
-| user_id             | reference | null: false, foreign_key: true |
-| item_id             | reference | null: false, foreign_key: true |
+| user                | reference | null: false, foreign_key: true |
+| item                | reference | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user

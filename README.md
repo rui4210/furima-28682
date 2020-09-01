@@ -1,5 +1,6 @@
 # README
 
+
 ##　users テーブル
 
 | Column           | Type   | Options     |
@@ -15,42 +16,49 @@
 
 ### Association
 - has_many :items
-- has_many :buys
+- has_many :item_purchases
 
 ##　items テーブル
 
 | Column           | Type      | Options     |
 | ---------------- | -------   | ----------- |
-| name  　　　      | string    | null: false |
-| category         | string    | null: false |
+| name             | string    | null: false |
+| category         | integer   | null: false |
 | price            | integer   | null: false |
 | product_status   | integer   | null: false |
 | shipping_charges | integer   | null: false |
 | shipping_region  | integer   | null: false |
 | shipping_day     | integer   | null: false |
 | image            | text      | null: false |
-| desecription     | text      | null: false |
+| description      | text      | null: false |
 | user             | reference | foreign_key: true |
 
 ### Association
-- belings_to :user
-- belongs_to :buy
+- belongs_to :user
+- has_one :item_purchase
 
 ##　buys テーブル
 
-| Column              | Type    | Options     |
-| ------------------- | ------- | ----------- |
-| credit_card         | integer | null: false |
-| card_validity_year  | integer | null: false |
-| card_validity_month | integer | null: false |
-| cvc                 | integer | null: false |
-| post_number         | string  | null: false |
-| prefecture          | integer | null: false |
-| city                | string  | null: false |
-| adress              | text    | null: false |
-| buolding_name       | text    | null: false |
-| phone_number        | string  | null: false |
+| Column              | Type      | Options     |
+| ------------------- | --------- | ----------- |
+| post_number         | string    | null: false |
+| prefecture          | integer   | null: false |
+| city                | string    | null: false |
+| address             | string    | null: false |
+| building_name       | string    |             |
+| phone_number        | string    | null: false |
+| item_purchases      | reference | null: false, foreign_key: true |
 
 ### Association
-- belings_to :user
+- belongs_to :item_purchase
+
+## item_purchases　テーブル
+| Column              | Type      | Options     |
+| ------------------- | --------- | ----------- |
+| user                | reference | null: false, foreign_key: true |
+| item                | reference | null: false, foreign_key: true |
+
+### Association
+- belongs_to :user
 - belongs_to :item
+- has_one :buy

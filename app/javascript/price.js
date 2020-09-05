@@ -6,11 +6,11 @@ const Tax = document.getElementById("add-tax-price");
 const Profit = document.getElementById("profit");
 
 //イベント発火
-Price.addEventListener("input",function(){
-const inputValue = document.getElementById("item-price").value;
-Tax.innerHTML = Math.floor(inputValue * 0.1).toLocaleString();
-Profit.innerHTML = Math.floor(inputValue * 0.9).toLocaleString();
-})
+  Price.addEventListener("input",function(){
+  const inputValue = Price.value;
+  Tax.innerHTML = Math.floor(inputValue * 0.1).toLocaleString();
+  Profit.innerHTML = Math.floor(inputValue * 0.9).toLocaleString();
+  })
 });
 
 

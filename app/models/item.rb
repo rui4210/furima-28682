@@ -18,6 +18,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   #商品情報
+  validates :image, presence: true
   #商品名が必須であること
   validates :name, presence: true
   #商品の説明が必須であること

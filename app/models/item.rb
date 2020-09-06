@@ -18,36 +18,45 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   #商品情報
-  validates :image, presence: true
-  #商品名が必須であること
-  validates :name, presence: true
-  #商品の説明が必須であること
-  validates :description, presence: true
-  #カテゴリーの情報が必須であること
-  validates :category_id, presence: true
-  #商品の状態についての情報が必須であること
-  validates :product_status_id, presence: true
-  #配送料の負担についての情報が必須であること
-  validates :shipping_charges_id, presence: true
-  #発送元の地域についての情報が必須であること
-  validates :shipping_region_id, presence: true
-  #発送までの日数についての情報が必須であること
-  validates :shipping_day_id, presence: true
-  #価格についての情報が必須であること
-  validates :price, presence: true
+  #必須であること
+  with_options presence: true do
+    #商品画像
+    validates :image
+    #商品名
+    validates :name
+    #商品の説明
+    validates :description
+    #カテゴリーの情報
+    validates :category_id
+    #商品の状態
+    validates :product_status_id
+    #配送料の負担
+    validates :shipping_charges_id
+    #発送元の地域
+    validates :shipping_region_id
+    #発送までの日数
+    validates :shipping_day_id
+    #価格
+    validates :price
+  end
+
   #価格の範囲が、¥300~¥9,999,999の間であること
   validates :price, inclusion: { in: 300..9999999 }
   #販売価格は半角数字のみ入力可能であること
   VALID_PRICE_REGEX = /\A[0-9]+\z/
   validates :price, format: { with: VALID_PRICE_REGEX }
-  #カテゴリーの選択が「--」の時は保存できないようにする
-  validates :category_id, numericality: { other_than: 1 }
-  #商品の状態の選択が「--」の時は保存できないようにする
-  validates :product_status_id, numericality: { other_than: 1 }
-  #配送料の負担の選択が「--」の時は保存できないようにする
-  validates :shipping_charges_id, numericality: { other_than: 1 }
-  #発送元の地域の選択が「--」の時は保存できないようにする
-  validates :shipping_region_id, numericality: { other_than: 1 }
-  #発送までの日数の選択が「--」の時は保存できないようにする
-  validates :shipping_day_id, numericality: { other_than: 1 }
+  
+  #「--」の時は保存できないようにする
+  with_options numericality: { other_than: 1 } do
+    #カテゴリーの選択
+    validates :category_id
+    #商品の状態の選択
+    validates :product_status_id
+    #配送料の負担の選択
+    validates :shipping_charges_id
+    #発送元の地域の選択
+    validates :shipping_region_id
+    #発送までの日数の選択が「--」の時は保存できないようにする
+    validates :shipping_day_id
+  end
 end

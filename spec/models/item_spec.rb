@@ -75,14 +75,15 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
       it "価格についての情報が¥300~¥9,999,999の範囲外の価格では登録できない" do
-        @item.price = '299,10000000'
+        @item.price = 299,10000000
         @item.valid?
-        expect(@item.errors.full_messages)
+        expect(@item.errors.full_messages).to include("Price is not ¥300~¥9,999,999")
       end
       it "価格についての情報が半角数字以外の入力だと登録できない" do
-        @item.price = '３三さんサン'
+        @item.price = "３００"
         @item.valid?
-        expect(@item.errors.full_messages)
+        #binding.pry
+        expect(@item.errors.full_messages).to include("Price is not half width digit")
       end
     end
   end

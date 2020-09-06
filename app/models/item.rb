@@ -40,11 +40,11 @@ class Item < ApplicationRecord
     validates :price
   end
 
-  #価格の範囲が、¥300~¥9,999,999の間であること
-  validates :price, inclusion: { in: 300..9999999 }, presence: { message: 'price is not ¥300~¥9,999,999' }
   #販売価格は半角数字のみ入力可能であること
   VALID_PRICE_REGEX = /\A[0-9]+\z/
-  validates :price, format: { with: VALID_PRICE_REGEX }, presence: { message: 'price is not half width digit' }
+  validates :price, numericality: { with: VALID_PRICE_REGEX, message: 'is not half width digit' }
+  #価格の範囲が、¥300~¥9,999,999の間であること
+  validates :price, inclusion: { in: 300..9999999, message: 'is not ¥300~¥9,999,999' }
   
   #「--」の時は保存できないようにする
   with_options numericality: { other_than: 1 } do

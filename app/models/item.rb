@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   #商品の状態（ActiveHash）のアソシエーションの設定
   belongs_to_active_hash :product_status
   #配送料の負担（ActiveHash）のアソシエーションの設定
-  belongs_to_active_hash :shipping_charge
+  belongs_to_active_hash :shipping_charges
   #配送元の地域（ActiveHash）のアソシエーションの設定
   belongs_to_active_hash :shipping_region
   #配送までの日数（ActiveHash）のアソシエーションの設定

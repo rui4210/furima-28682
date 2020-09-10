@@ -53,6 +53,11 @@ RSpec.describe OrderPurchase, type: :model do
         @orderpruchase.valid?
         expect(@orderpruchase.errors.full_messages).to include("Post number is invalid")
       end
+      it "カード情報がないと登録できない" do
+        @orderpruchase.token = ''
+        @orderpruchase.valid?
+        expect(@orderpruchase.errors.full_messages).to include("Token can't be blank")
+      end
     end
   end
 end

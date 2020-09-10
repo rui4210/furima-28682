@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
   before_action :correct_user, only: [:index]
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     if user_signed_in?
     else
       redirect_to user_session_path
@@ -16,7 +16,6 @@ class OrdersController < ApplicationController
       @order.save
       return redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render 'index'
     end
   end
@@ -42,6 +41,10 @@ class OrdersController < ApplicationController
     if @item.user_id == current_user.id
       redirect_to root_url
     end
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end

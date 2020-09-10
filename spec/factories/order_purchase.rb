@@ -5,6 +5,6 @@ FactoryBot.define do
     city                  {"大阪市"}
     address               {"１−１−１"}
     phone_number          {"00000000000"}
-    #association :item_purchase
+    token                 {"00000000000"}
   end
 end

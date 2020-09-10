@@ -16,6 +16,8 @@ class OrderPurchase
     validates :address
     #電話番号
     validates :phone_number
+    #カード情報
+    validates :token
   end
 
   #郵便番号は-（ハイフン）を含む必要があること
@@ -28,9 +30,7 @@ class OrderPurchase
   validates :prefecture, numericality: { other_than: 1 } 
 
   def save
-    # orderの情報を保存
     item_purchase = ItemPurchase.create!(user_id: user_id, item_id: item_id)
     Order.create!(post_number: post_number, prefecture: prefecture, city: city, address: address, phone_number: phone_number, item_purchase_id: item_purchase.id)
-    # item_purchaseにuser_id、item_idを保存
   end
 end

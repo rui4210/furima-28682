@@ -82,7 +82,6 @@ RSpec.describe Item, type: :model do
       it "価格についての情報が半角数字以外の入力だと登録できない" do
         @item.price = "３００"
         @item.valid?
-        #binding.pry
         expect(@item.errors.full_messages).to include("Price is not half width digit")
       end
     end

@@ -15,4 +15,3 @@ class CreateItems < ActiveRecord::Migration[6.0]
   end
 end
 
-#imageカラムを消す。

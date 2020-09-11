@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
     else
       redirect_to user_session_path
     end
+    @order = OrderPurchase.new
   end
 
   def create
@@ -23,7 +24,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:token, :post_number, :prefecture, :city, :address, :building_name, :phone_number, :item_id).merge(user_id: current_user.id)
+    params.require(:order_purchase).permit(:post_number, :prefecture, :city, :address, :building_name, :phone_number).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
   end
 
   def pay_item
